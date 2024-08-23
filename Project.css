@@ -1,0 +1,891 @@
+/* CSS Variables ------------------------------------------ */
+
+:host {
+  --control-color-primary: #374151;
+  --control-color-primary-hover: #1f2937;
+  --control-color-primary-text: #fff;
+  --control-color-primary-text-hover: #fff;
+  --control-color-light: #f3f4f6;
+  --control-color-light-hover: #d1d5db;
+  --control-color-dark: #374151;
+  --control-color-dark-hover: #1f2937;
+  --control-color-border: #d1d5db;
+  --control-color-border-hover: #9ca3af;
+
+  --control-radius: 0.5rem;
+  --input-radius: 0.5rem;
+  --button-radius: 1rem;
+
+  --control-padding: 0.5rem;
+  --input-padding: 0.6rem;
+  --button-padding: 0.5rem;
+  --cell-padding: 0.5rem;
+
+  --input-gap: 0.5rem;
+  --input-size: 20px;
+
+  --icon-color: var(--control-color-primary);
+  --icon-size: 1rem;
+
+  --animation-speed: 100ms;
+  --animation-curve: ease;
+}
+
+
+/* Responsive Form Template Specific CSS ------------------ */
+
+[data-metadata*="navigation-button"]::part(button) {
+  gap: 0.5rem;
+  padding: 0;
+}
+
+[data-metadata*="navigation-button"]::part(picture) {
+  flex: none;
+  width: 2.5rem;
+}
+
+[data-metadata*="navigation-button"]::part(text) {
+  white-space: nowrap;
+  transition: opacity var(--animation-speed) var(--animation-curve);
+}
+
+[data-metadata*="navigation-button"][data-metadata*="collapsed"]::part(text) {
+  opacity: 0;
+}
+
+[data-metadata*="summary-header"] {
+  border-radius: 0;
+}
+
+[data-metadata*="summary-header"]::part(button) {
+  flex-direction: row-reverse;
+  border: 0;
+  background-color: transparent;
+}
+
+[data-metadata*="summary-header"]::part(picture) {
+  flex: none;
+}
+
+[data-metadata*="summary-header"]::part(text) {
+  padding-left: 0.5rem;
+}
+
+
+/* Animated Properties -------------------------------------------------*/
+
+[data-metadata*="animate"] {
+  transition-duration: var(--animation-speed);
+  transition-timing-function: var(--animation-curve);
+}
+
+[data-metadata*="animate-layout"] {
+  transition-property: width, height, margin;
+}
+
+[data-metadata*="animate-size"] {
+  transition-property: width, height;
+}
+
+[data-metadata*="animate-width"] {
+  transition-property: width;
+}
+
+[data-metadata*="animate-height"] {
+  transition-property: height;
+}
+
+[data-metadata*="animate-position"] {
+  transition-property: margin;
+}
+
+
+/* CONTROL CUSTOMIZATIONS ------------------------------------------ */
+
+/* Picture Styling -----------------------------------------------*/
+/* Rounded corners for picture controls */
+/* Used in Rooftop */
+dw-picture-box[data-metadata*="Rounded_picture"] {
+  color: #9A9B9C;
+
+  padding: 10px 20px;
+  border-radius: 20px; /* Adjust as needed */
+  Overflow: hidden;
+  transition: board-radius 0.3s ease;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+
+
+
+
+
+/* Frame Controls  ------------------------------------------------------- */
+/* Base style for the frame control */
+/* Used in Rooftop */
+dw-frame-control[data-metadata*="styled-frame"] {
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  overflow: hidden; /* Ensure content does not overflow rounded corners */
+  transition: box-shadow 0.3s ease, border-radius 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover effect for the frame control */
+dw-frame-control[data-metadata*="styled-frame"]:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+  border-radius: 20px; /* Slightly more rounded corners on hover */
+}
+
+/* Base style for the specification host control */
+dw-specification-host[data-metadata*="styled-spec-host"] {
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  overflow: hidden; /* Ensure content does not overflow rounded corners */
+  transition: box-shadow 0.3s ease, border-radius 0.3s ease; /* Smooth transitions */
+}
+
+
+
+
+
+
+
+/* Check Box ------------------------------------------------------- */
+/* Used in Rooftop */
+dw-check-box[data-metadata*="styled"] {
+  --dw-checkbox-size: var(--input-size);
+  gap: var(--input-gap);
+}
+
+dw-check-box[data-metadata*="styled"]::part(checkbox) {
+  border-width: 2px;
+  border-color: var(--control-color-border);
+}
+
+dw-check-box[data-metadata*="styled"]::part(check) {
+  background-color: var(--control-color-primary);
+}
+
+
+/* Combo Box ------------------------------------------------------- */
+/* Used in Rooftop */
+dw-combo-box[data-metadata*="styled"]::part(select) {
+  padding: var(--input-padding);
+  padding-right: calc(var(--input-padding) * 2);
+  border: 1px solid var(--control-color-border);
+  border-radius: var(--input-radius);
+  background-color: #fff;
+  transition: border-color 250ms ease;
+}
+
+dw-combo-box[data-metadata*="styled"]::part(select):hover {
+  border-color: var(--control-color-border-hover);
+}
+
+dw-combo-box[data-metadata*="styled"]::part(arrow) {
+  margin-right: var(--input-padding);
+  background-color: var(--control-color-primary);
+}
+
+
+/* Data Table ------------------------------------------------------- */
+
+dw-data-table-control[data-metadata*="styled"] {
+  padding: var(--control-padding);
+  border: 1px solid var(--control-color-border);
+  border-radius: calc(var(--control-radius) * 1.75);
+}
+
+dw-data-table-control[data-metadata*="styled"]::part(list-view) {
+  padding: var(--control-padding) calc(var(--control-padding) * 1.5);
+  border: 1px solid var(--control-color-border);
+  border-radius: var(--control-radius);
+  background-color: #fff;
+}
+
+dw-data-table-control[data-metadata*="styled"]::part(heading-cell) {
+  padding: calc(var(--control-padding) * 1.5) var(--control-padding);
+  border: none;
+  border-bottom: 1px solid var(--control-color-border);
+}
+
+dw-data-table-control[data-metadata*="styled"]::part(heading-action) {
+  padding: 0;
+}
+
+dw-data-table-control[data-metadata*="styled"]::part(row-cell),
+dw-data-table-control[data-metadata*="styled"]::part(row-selected-cell) {
+  padding: var(--control-padding);
+  border: none;
+  border-bottom: 1px solid var(--control-color-border);
+}
+
+dw-data-table-control[data-metadata*="styled"]::part(arrow-up),
+dw-data-table-control[data-metadata*="styled"]::part(arrow-down) {
+  color: var(--control-color-primary);
+}
+
+
+/* Date Picker ------------------------------------------------------- */
+
+dw-date-picker[data-metadata*="styled"]::part(input) {
+  padding: var(--input-padding);
+  border: 1px solid var(--control-color-border);
+  border-radius: var(--input-radius);
+  transition: border-color 250ms ease;
+}
+
+dw-date-picker[data-metadata*="styled"]::part(native-input) {
+  height: var(--dw-property-height);
+}
+
+dw-date-picker[data-metadata*="styled"]:hover::part(input) {
+  border-color: var(--control-color-border-hover);
+}
+
+dw-date-picker[data-metadata*="styled"]::part(icon) {
+  font-size: var(--icon-size);
+  background-color: var(--icon-color);
+}
+
+
+/* List Box ------------------------------------------------------- */
+
+dw-list-box[data-metadata*="styled"]::part(list-box) {
+  padding: 0.2rem;
+  border: 1px solid var(--control-color-border);
+  border-radius: var(--control-radius);
+}
+
+dw-list-box[data-metadata*="styled"]::part(list-item),
+dw-list-box[data-metadata*="styled"]::part(list-item-selected) {
+  padding: var(--control-padding);
+  margin: 0.2rem;
+  border-radius: calc(var(--control-radius) * 0.75);
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color 250ms ease,
+    color 250ms ease;
+}
+
+dw-list-box[data-metadata*="styled"]::part(list-item):hover {
+  border: none;
+  background-color: var(--control-color-light);
+  color: var(--control-color-dark);
+}
+
+dw-list-box[data-metadata*="styled"]::part(list-item-selected),
+dw-list-box[data-metadata*="styled"]::part(list-item-selected):hover {
+  background-color: var(--control-color-primary);
+  color: var(--control-color-primary-text);
+}
+
+
+/* Measurement Text Box ------------------------------------------------------- */
+
+dw-measurement-text-box[data-metadata*="styled"]::part(measurement-input) {
+  border: 1px solid var(--control-color-border);
+  border-radius: var(--input-radius);
+  overflow: hidden;
+}
+
+dw-measurement-text-box[data-metadata*="styled"]::part(measurement-input):hover {
+  border-color: var(--control-color-border-hover);
+}
+
+dw-measurement-text-box[data-metadata*="styled"]::part(input) {
+  padding: var(--input-padding);
+  border: none;
+  border-radius: var(--input-radius) 0 0 var(--input-radius);
+}
+
+dw-measurement-text-box[data-metadata*="styled"]::part(select) {
+  padding: var(--input-padding);
+  padding-right: calc(var(--input-padding) + var(--icon-size));
+  border: none;
+  border-radius: 0 var(--input-radius) var(--input-radius) 0;
+  background-color: var(--control-color-light);
+  cursor: pointer;
+}
+
+dw-measurement-text-box[data-metadata*="styled"]::part(select):hover {
+  background-color: var(--control-color-light-hover);
+}
+
+dw-measurement-text-box[data-metadata*="styled"]::part(select):focus,
+dw-measurement-text-box[data-metadata*="styled"]::part(select):active {
+  background-color: var(--control-color-light);
+}
+
+
+/* Macro Button ------------------------------------------------------- */
+/* Used in Rooftop */
+dw-macro-button[data-metadata*="styled"] {
+  border-radius: var(--button-radius);
+}
+
+dw-macro-button[data-metadata*="styled"]::part(button) {
+  border: none;
+  background-color: transparent;
+  transition: backdrop-filter 250ms ease;
+}
+
+dw-macro-button[data-metadata*="styled"]::part(button):hover {
+  backdrop-filter: brightness(0.9);
+}
+
+
+
+
+
+/* Macro Button Fixed radius and brighter------------------------------ */
+dw-macro-button[data-metadata*="styled1"] {
+  border-radius: 5px;
+}
+
+dw-macro-button[data-metadata*="styled1"]::part(button) {
+  border: none;
+  background-color: transparent;
+  transition: backdrop-filter 250ms ease;
+}
+
+dw-macro-button[data-metadata*="styled1"]::part(button):hover {
+  backdrop-filter: brightness(1.1);
+}
+
+
+
+
+
+/* Macro Button red button---------------------------------------------- */
+/* Used in Rooftop */
+dw-macro-button[data-metadata*="styledAlt"] {
+  background-color: white;
+  color: red;
+  border: 4px solid red; /* Red border */
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+dw-macro-button[data-metadata*="styledAlt"]:hover::part(button) {
+  border-color: var(--control-color-primary-hover);
+  backdrop-filter: brightness(0.9);
+}
+
+
+
+
+
+
+/* Macro Button Orange Background------------------------------------------------ */
+/* Used in Rooftop */
+dw-macro-button[data-metadata*="Macro1"] {
+  
+  border-radius: 25px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+  background-color: #ff6600; /* Orange background color */
+  color: white; /* White text color */
+  text-align: center; /* Center the text */
+}
+
+dw-macro-button[data-metadata*="Macro1"]::part(button) {
+  border: none;
+  background-color: transparent;
+  transition: backdrop-filter 250ms ease;
+}
+
+dw-macro-button[data-metadata*="Macro1"]::part(button):hover {
+  backdrop-filter: brightness(0.9);
+}
+
+[data-metadata*="Macro1"]::part(picture) {
+
+  height: auto;
+  margin-right: auto; 
+  padding-left: 8px; 
+  order: 0;
+
+  
+  border-radius: 25px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+  background-color: #ff6600; /* Orange background color */
+  color: white; /* White text color */
+  text-align: center; /* Center the text */
+
+ 
+}
+
+[data-metadata*="Macro1"]::part(text) {
+  flex: none;  
+  padding-right: 16px;
+  order:1;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Macro Button Tab Picture on Left------------------------------------------------------- */
+/* Base style for the macro button */
+/* Used in Rooftop */
+dw-macro-button[data-metadata*="macro-pic-left-Tab"] {
+ 
+  align-items: center; /* Center items vertically */
+  padding: 10px; /* Add padding for content */
+  border-top-left-radius: 10px; /* Rounded top-left corner */
+  border-top-right-radius: 10px; /* Rounded top-right corner */
+  border-bottom-left-radius: 0; /* No rounding on bottom-left corner */
+  border-bottom-right-radius: 0; /* No rounding on bottom-right corner */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  transition: box-shadow 0.3s ease, filter 0.3s ease; /* Smooth transition for shadow and brightness */
+}
+
+/* Hover effect for the entire button */
+dw-macro-button[data-metadata*="macro-pic-left-Tab"]:hover {
+  filter: brightness(1.1); /* Make the button 10% brighter on hover */
+  font-weight: bold;
+}
+
+/* Create a pseudo-element for the red line */
+dw-macro-button[data-metadata*="macro-pic-left-Tab"]::after {
+  content: ''; /* Create a pseudo-element */
+  position: absolute; /* Position it absolutely */
+  bottom: 2px; /* Align it to the bottom */
+  left: 50%; /* Center it horizontally */
+  transform: translateX(-50%); /* Center it */
+  width: 0%; /* Start with a width of 0 */
+  height: 2px; /* Set the height of the red line */
+  background-color: #C4262e; /* Set the color of the red line */
+  border-radius: 2px; /* Rounded ends */
+  transition: width 0.3s ease; /* Smooth transition for width */
+}
+
+/* Hover effect to show the red line */
+dw-macro-button[data-metadata*="macro-pic-left-Tab"]:hover::after {
+  width: 80%; /* Set the width of the red line on hover */
+  border-radius: 2px 2px 2px 2px; /* Ensure the ends are rounded */
+}
+
+
+
+/* Style for the button part */
+dw-macro-button[data-metadata*="macro-pic-left-Tab"]::part(button) {
+  border: none;
+  background-color: transparent;
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center items vertically */
+  flex: 1; /* Allow button part to grow and fill the remaining space */
+}
+
+/* Style for the picture inside the macro button */
+dw-macro-button[data-metadata*="macro-pic-left-Tab"]::part(picture) {
+  flex: none; /* Do not grow or shrink */
+  border-radius: 2px; /* Rounded corners */
+  height: calc(100% - 10px); /* Adjust height based on padding */
+  width: auto; /* Maintain aspect ratio */
+  margin-right: 15px; /* Space between picture and text */
+  order: 0; /* Display picture first */
+  min-width: 24px; /* Ensure minimum width */
+  min-height: 24px; /* Ensure minimum height */
+}
+
+/* Style for the text inside the macro button */
+dw-macro-button[data-metadata*="macro-pic-left-Tab"]::part(text) {
+  flex: 1; /* Allow text to grow and fill the remaining space */
+  order: 1; /* Display text after picture */
+  padding-right: 16px; /* Space between text and picture */
+
+}
+
+
+
+
+
+
+/* Macro Button Tab Picture on Left Variation--------------------------------------------- */
+/* Used in Rooftop */
+dw-macro-button[data-metadata*="macro-pic-back"] {
+  color: #C4262e;
+  border: 3px solid #C4262e; /* Red border */
+  padding: 10px 20px;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  transition: box-shadow 0.3s ease, filter 0.3s ease;/* Smooth transition for shadow and brightness */
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center items vertically */
+}
+
+/* Hover effect for the entire button */
+dw-macro-button[data-metadata*="macro-pic-back"]:hover {
+  border-color: var(--control-color-primary-hover);
+  filter: brightness(1.1); /* Make the button 10% brighter on hover */
+}
+
+/* Style for the button part */
+dw-macro-button[data-metadata*="macro-pic-back"]::part(button) {
+  border: none;
+  background-color: transparent;
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center items vertically */
+  flex: 1; /* Allow button part to grow and fill the remaining space */
+}
+
+/* Style for the picture inside the macro button */
+dw-macro-button[data-metadata*="macro-pic-back"]::part(picture) {
+  flex: none; /* Do not grow or shrink */
+  border-radius: 25px; /* Rounded corners */
+  height: 50px; /* Adjust height based on padding */
+  width: auto; /* Maintain aspect ratio */
+  margin-right: 15px; /* Space between picture and text */
+  order: 0; /* Display picture first */
+  min-width: 24px; /* Ensure minimum width */
+  min-height: 24px; /* Ensure minimum height */
+}
+
+/* Style for the text inside the macro button */
+dw-macro-button[data-metadata*="macro-pic-back"]::part(text) {
+  flex: 1; /* Allow text to grow and fill the remaining space */
+  order: 1; /* Display text after picture */
+  padding-right: 16px; /* Space between text and picture */
+
+}
+
+
+/* Macro Button Tab Picture on Right--------------------------------------------- */
+/* Used in Rooftop */
+dw-macro-button[data-metadata*="macro-pic-right"] {
+  /*display: inline-flex;  */
+  color: #C4262e;
+  border: 3px solid #C4262e; /* Red border */
+  padding: 10px 20px;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+/* Hover effect for the entire button */
+dw-macro-button[data-metadata*="macro-pic-right"]:hover {
+  border-color: var(--control-color-primary-hover);
+  filter: brightness(1.1);
+}
+
+/* Style for the button part */
+dw-macro-button[data-metadata*="macro-pic-right"]::part(button) {
+  border: none;
+  background-color: transparent;
+ /* display: flex; /* Use flexbox for layout */
+ /* flex: 1; /* Allow button part to grow and fill the remaining space */
+   
+}
+
+/* Style for the picture inside the macro button (now on the right) */
+dw-macro-button[data-metadata*="macro-pic-right"]::part(picture) {
+  /*flex: none;*/
+  /*justify-content: flex-end; /* Right justify the picture */
+  border-radius: 25px;
+  height: 50px;
+  width: auto;
+  order: 2; /* Display picture on right */
+  margin-left: 20px;
+
+  min-width: 24px;
+  min-height: 24px;
+ 
+}
+
+/* Style for the text inside the macro button (now centered) */
+dw-macro-button[data-metadata*="macro-pic-right"]::part(text) {
+ /* flex: 3;*/
+  order: 1;
+  padding-right: 16px; /* Space between text and picture */
+ /* text-align: center; /* Space between text and picture */
+}
+
+
+/* Macro Button Tab Picture on Right Variation--------------------------------------------- */
+/* Used in Rooftop */
+dw-macro-button[data-metadata*="macro-pic-complete"] {
+  /*display: inline-flex;  */
+  color: #0ED145;
+  border: 3px solid #0ED145; /* Red border */
+  padding: 10px 20px;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+/* Hover effect for the entire button */
+dw-macro-button[data-metadata*="macro-pic-complete"]:hover {
+  border-color: var(--control-color-primary-hover);
+  filter: brightness(1.1);
+}
+
+/* Style for the button part */
+dw-macro-button[data-metadata*="macro-pic-complete"]::part(button) {
+  border: none;
+  background-color: transparent;
+  display: flex; /* Use flexbox for layout */
+ /* flex: 1; /* Allow button part to grow and fill the remaining space */
+   
+}
+
+/* Style for the picture inside the macro button (now on the right) */
+dw-macro-button[data-metadata*="macro-pic-complete"]::part(picture) {
+  flex: none;
+  justify-content: space-around; /* Right justify the picture */
+  border-radius: 25px;
+  height: 20px;
+  width: auto;
+  order: 2; /* Display picture on right */
+  margin-left: 20px;
+
+  min-width: 24px;
+  min-height: 24px;
+ 
+}
+
+/* Style for the text inside the macro button (now centered) */
+dw-macro-button[data-metadata*="macro-pic-complete"]::part(text) {
+  flex: 3;
+  order: 1;
+  padding-right: 16px; /* Space between text and picture */
+ /* text-align: center; /* Space between text and picture */
+}
+
+
+/* Macro Button Tab Picture on Right Black Border--------------------------------------------- */
+/* Used in Rooftop */
+dw-macro-button[data-metadata*="macro-pic-black-right"] {
+  /*display: inline-flex;  */
+  color: #000000;
+  border: 2px solid #000000; /* Black border */
+  padding: 5px 10px;
+  font-size: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+/* Hover effect for the entire button */
+dw-macro-button[data-metadata*="macro-pic-black-right"]:hover {
+  border-color: var(--control-color-primary-hover);
+  filter: brightness(1.1);
+}
+
+/* Style for the button part */
+dw-macro-button[data-metadata*="macro-pic-black-right"]::part(button) {
+  border: none;
+  background-color: transparent;
+  display: flex; /* Use flexbox for layout */
+ /* flex: 1; /* Allow button part to grow and fill the remaining space */
+   
+}
+
+/* Style for the picture inside the macro button (now on the right) */
+dw-macro-button[data-metadata*="macro-pic-black-right"]::part(picture) {
+  flex: none;
+  justify-content: flex-end; /* Right justify the picture */
+  border-radius: 5px;
+  height: 20px;
+  width: auto;
+  order: 1; /* Display picture on right */
+  margin-left: 1px;
+
+  min-width: 24px;
+  min-height: 24px;
+ 
+}
+
+/* Style for the text inside the macro button (now centered) */
+dw-macro-button[data-metadata*="macro-pic-black-right"]::part(text) {
+  flex: 3;
+  order: 0;
+  padding-right: 4px; /* Space between text and picture */
+ /* text-align: center; /* Space between text and picture */
+}
+
+
+
+
+/* Numeric Text Box ------------------------------------------------------- */
+/* Used in Rooftop */
+dw-numeric-text-box[data-metadata*="styled"]::part(input) {
+  padding: var(--input-padding);
+  border: 1px solid var(--control-color-border);
+  border-radius: var(--input-radius);
+}
+
+dw-numeric-text-box[data-metadata*="styled"]::part(input):hover {
+  border-color: var(--control-color-border-hover);
+}
+
+
+/* Option Button ------------------------------------------------------- */
+/* Used in Rooftop */
+dw-option-button[data-metadata*="styled"] {
+  --dw-option-size: var(--input-size);
+  --dw-option-dot-inset: 4px;
+}
+
+dw-option-button[data-metadata*="styled"]::part(option) {
+  gap: var(--input-gap);
+}
+
+dw-option-button[data-metadata*="styled"]::part(radio) {
+  border-width: 2px;
+  border-color: var(--control-color-border);
+}
+
+dw-option-button[data-metadata*="styled"]::part(dot) {
+  background-color: var(--control-color-primary);
+}
+
+
+/* Option Group ------------------------------------------------------- */
+
+dw-option-group[data-metadata*="styled"] {
+  --dw-option-size: var(--input-size);
+  --dw-option-dot-inset: 4px;
+}
+
+dw-option-group[data-metadata*="styled"]::part(legend) {
+  display: none;
+}
+
+dw-option-group[data-metadata*="styled"]::part(fieldset) {
+  border-color: var(--control-color-border);
+  border-radius: var(--control-radius);
+  padding: var(--control-padding);
+}
+
+dw-option-group[data-metadata*="styled"]::part(option) {
+  gap: var(--input-gap)
+}
+
+dw-option-group[data-metadata*="styled"]::part(radio) {
+  border-width: 2px;
+  border-color: var(--control-color-border);
+}
+
+dw-option-group[data-metadata*="styled"]::part(dot) {
+  background-color: var(--control-color-primary);
+}
+
+
+/* Slider ------------------------------------------------------- */
+
+dw-slider[data-metadata*="styled"]::part(caption) {
+  justify-content: left;
+  padding-bottom: 0.5rem;
+}
+
+dw-slider[data-metadata*="styled"]::part(handle) {
+  background-color: var(--control-color-primary);
+  border: none;
+  border-radius: 0.5rem;
+  transition: background-color 250ms ease;
+}
+
+dw-slider[data-metadata*="styled"]::part(handle):hover,
+dw-slider[data-metadata*="styled"]::part(handle):active {
+  background-color: var(--control-color-primary-hover);
+  border: none;
+}
+
+dw-slider[data-metadata*="styled"]::part(min-label),
+dw-slider[data-metadata*="styled"]::part(max-label) {
+  padding-top: 0.5rem;
+}
+
+
+/* Spin Button ------------------------------------------------------- */
+/* Used in Rooftop */
+dw-spin-button[data-metadata*="styled"]::part(spin-button) {
+  grid-template-columns: 1fr 30px;
+  border: 1px solid var(--control-color-border);
+  border-radius: var(--input-radius);
+  overflow: hidden;
+  transition: border-color 250ms ease;
+}
+
+dw-spin-button[data-metadata*="styled"]::part(spin-button):hover {
+  border-color: var(--control-color-border-hover);
+}
+
+dw-spin-button[data-metadata*="styled"]::part(input) {
+  padding: var(--input-padding);
+  border: none;
+  border-radius: var(--input-radius) 0 0 var(--input-radius);
+}
+
+dw-spin-button[data-metadata*="styled"]::part(button) {
+  border: none;
+  background-color: var(--control-color-light);
+}
+
+dw-spin-button[data-metadata*="styled"]::part(button):hover {
+  background-color: var(--control-color-light-hover);
+}
+
+
+/* Text Box ------------------------------------------------------- */
+/* Used in Rooftop */
+dw-text-box[data-metadata*="styled"]::part(input) {
+  padding: var(--input-padding);
+  border: 1px solid var(--control-color-border);
+  border-radius: var(--input-radius);
+}
+
+dw-text-box[data-metadata*="styled"]::part(input):hover {
+  border-color: var(--control-color-border-hover);
+}
+
+
+/* Upload Control ------------------------------------------------------- */
+
+dw-upload-control[data-metadata*="styled"] {
+  border-radius: var(--button-radius);
+}
+
+dw-upload-control[data-metadata*="styled"]::part(button) {
+  padding: var(--button-padding);
+  border: none;
+  border-radius: var(--button-radius);
+  background-color: transparent;
+}
+
+dw-upload-control[data-metadata*="styled"]:hover::part(button) {
+  backdrop-filter: brightness(0.9);
+}
+
+dw-upload-control[data-metadata*="styled alt"]::part(button) {
+  border: 2px solid var(--control-color-primary);
+  background-color: transparent;
+}
+
+
+
+/*Label Control-----------------------------------------------------------------------*/
+/* Used in Rooftop */
+
+dw-label[data-metadata*="styled"] {
+  border-radius: 10px;
+  padding: 5px;
+}
